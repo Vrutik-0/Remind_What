@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RemindMe</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-logo">
+      <span class="logo-icon">⏰</span>
+      <span class="logo-text">Remind<em>Me</em></span>
+    </div>
+    <div class="live-clock" id="liveClock">00:00:00</div>
+  </header>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="reminders">🔔 Reminders</button>
+    <button class="tab-btn"        data-tab="timer">⏱ Timer</button>
+  </nav>
+
+  <!-- ═══════════ REMINDERS PANEL ═══════════ -->
+  <section class="panel" id="panel-reminders">
+
+    <div class="form-group">
+      <label class="form-label" for="rName">Reminder Name</label>
+      <input class="form-input" id="rName" type="text"
+             placeholder="e.g. Drink water, Stand up…" autocomplete="off" />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group flex-1">
+        <label class="form-label" for="rInterval">Interval</label>
+        <input class="form-input" id="rInterval" type="number" min="1" placeholder="45" />
+      </div>
+      <div class="form-group w-unit">
+        <label class="form-label" for="rUnit">Unit</label>
+        <select class="form-input" id="rUnit">
+          <option value="minutes">Minutes</option>
+          <option value="seconds">Seconds (test)</option>
+          <option value="hours">Hours</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="btnAddReminder">+ Add Reminder</button>
+
+    <hr class="divider" />
+
+    <div class="reminder-list" id="reminderList">
+      <div class="empty-state" id="reminderEmpty">
+        <div class="empty-icon">🗒️</div>
+        <div>No reminders yet.<br/>Add one above!</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════ TIMER PANEL ═══════════ -->
+  <section class="panel hidden" id="panel-timer">
+
+    <div class="form-group">
+      <label class="form-label" for="timerLabel">Label (optional)</label>
+      <input class="form-input" id="timerLabel" type="text"
+             placeholder="e.g. Pomodoro, Break…" autocomplete="off" />
+    </div>
+
+    <div class="form-row time-inputs">
+      <div class="form-group flex-1 center">
+        <label class="form-label">HH</label>
+        <input class="form-input time-digit" id="tHH" type="number"
+               min="0" max="99" placeholder="00" />
+      </div>
+      <div class="time-colon">:</div>
+      <div class="form-group flex-1 center">
+        <label class="form-label">MM</label>
+        <input class="form-input time-digit" id="tMM" type="number"
+               min="0" max="59" placeholder="25" />
+      </div>
+      <div class="time-colon">:</div>
+      <div class="form-group flex-1 center">
+        <label class="form-label">SS</label>
+        <input class="form-input time-digit" id="tSS" type="number"
+               min="0" max="59" placeholder="00" />
+      </div>
+    </div>
+
+    <!-- Ring + Clock -->
+    <div class="ring-wrap">
+      <svg class="ring-svg" viewBox="0 0 140 140" width="140" height="140">
+        <circle class="ring-bg"   cx="70" cy="70" r="58"/>
+        <circle class="ring-fill" cx="70" cy="70" r="58" id="ringFill"
+                stroke-dasharray="364.4"
+                stroke-dashoffset="0"/>
+      </svg>
+      <div class="ring-inner">
+        <div class="timer-clock" id="timerDisplay">00:00:00</div>
+        <div class="timer-sub"   id="timerSub">READY</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="timer-controls">
+      <button class="btn btn-primary"   id="btnStart">▶ Start</button>
+      <button class="btn btn-secondary hidden" id="btnPause">⏸ Pause</button>
+      <button class="btn btn-outline"   id="btnReset">↺ Reset</button>
+    </div>
+
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
