@@ -4,23 +4,6 @@ A clean, lightweight Chrome extension for recurring reminders and countdown time
 
 ---
 
-## File Structure
-
-```
-remindme-ext/
-├── manifest.json      ← Extension config (Manifest V3)
-├── popup.html         ← Extension popup UI
-├── popup.css          ← All styles (no frameworks)
-├── popup.js           ← Popup logic: tabs, reminders, timer
-├── background.js      ← Service worker: alarm events → notifications
-└── icons/
-    ├── icon16.png
-    ├── icon32.png
-    ├── icon48.png
-    └── icon128.png
-```
-
----
 
 ## How to Install in Chrome
 
